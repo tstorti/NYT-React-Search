@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
+import { Input, FormBtn } from "../../components/Form";
 
 class Articles extends Component {
   state = {
     articles: [],
     title: "",
     date: "",
-    url: ""
+    url: "",
+    searchTerm: "",
+    startYear:"",
+    endYear:"",
   };
 
   componentDidMount() {
@@ -30,18 +34,45 @@ class Articles extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-      API.saveArticle({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadArticles())
-        .catch(err => console.log(err));
+      //go get the articles
+      console.log("search the api")
+  };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
   };
 
   render() {
     return (
-      <div>Hello React</div>
+      <div>
+        <div>Hello React</div>
+        <Input
+          value={this.state.searchTerm}
+          onChange={this.handleInputChange}
+          name="searchTerm"
+          placeholder="Search Term"
+        />
+        <Input
+          value={this.state.startYear}
+          onChange={this.handleInputChange}
+          name="startYear"
+          placeholder="start year (optional)"
+        />
+        <Input
+          value={this.state.endYear}
+          onChange={this.handleInputChange}
+          name="endYear"
+          placeholder="end year (optional)"
+        />
+        <FormBtn
+          onClick={this.handleFormSubmit}
+        >
+          Search NYT API
+        </FormBtn>
+      </div>
     );
   }
 }
