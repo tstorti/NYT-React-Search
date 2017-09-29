@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Input, FormBtn } from "../../components/Form";
+import { ArticleContainer } from "../../components/ArticleContainer";
 
 class Articles extends Component {
   state = {
@@ -14,18 +15,6 @@ class Articles extends Component {
     endYear:"",
   };
 
-  componentDidMount() {
-    this.loadArticles();
-  }
-
-  loadArticles = () => {
-    API.getArticles()
-      .then(res =>
-        this.setState({ articles: res.data, title: "", date: "", url: "" })
-      )
-      .catch(err => console.log(err));
-  };
-
   deleteArticles = id => {
     API.deleteArticle(id)
       .then(res => this.loadBooks())
@@ -35,7 +24,16 @@ class Articles extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
       //go get the articles
-      console.log("search the api")
+      console.log("search the api");
+      API.getArticles(this.state.searchTerm, this.state.startYear, this.state.endYear)
+      .then(res => {
+        //cream filling
+        console.log(res);
+        this.setState({
+          articles : res.data.response.docs
+        });
+      })
+      .catch(err => console.log(err));
   };
 
   handleInputChange = event => {
@@ -72,6 +70,18 @@ class Articles extends Component {
         >
           Search NYT API
         </FormBtn>
+        
+        <div>
+          {this.state.articles.map(article => (
+          <ArticleContainer
+              key = {article._id}
+              id = {article._id}
+              title = {article.headline.main}
+              url = {article.web_url}
+              snippet = {article.snippet}
+            />
+           ))}
+        </div>
       </div>
     );
   }
