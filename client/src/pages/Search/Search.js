@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
 import { Input, FormBtn } from "../../components/Form";
 import { ArticleContainer } from "../../components/ArticleContainer";
 
@@ -20,11 +19,10 @@ class Articles extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
       //go get the articles
-      console.log("search the api");
       API.getArticles(this.state.searchTerm, this.state.startYear, this.state.endYear)
       .then(res => {
         //cream filling
-        console.log(res);
+        //console.log(res);
         this.setState({
           articles : res.data.response.docs
         });
@@ -42,7 +40,6 @@ class Articles extends Component {
   render() {
     return (
       <div>
-        <div>Hello Articles</div>
         <Input
           value={this.state.searchTerm}
           onChange={this.handleInputChange}

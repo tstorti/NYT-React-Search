@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
 import { SavedArticleContainer } from "../../components/SavedArticleContainer";
 
 class Articles extends Component {
@@ -17,7 +16,6 @@ class Articles extends Component {
   loadArticles = () => {
     API.getSavedArticles()
       .then(res => {
-        console.log(res.data);
         //set the articles value to all of the articles returned by the search in DB
         this.setState({
           articles : res.data
@@ -34,7 +32,6 @@ class Articles extends Component {
   render() {
     return (
       <div>
-        <div>Hello SavedArticles</div>
         <div>
           {this.state.articles.map(article => (
           <SavedArticleContainer

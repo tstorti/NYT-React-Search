@@ -1,7 +1,8 @@
 import React from "react";
+import "./SavedArticleContainer.css";
 
 export const SavedArticleContainer = props => (
-  <div>
+  <div className="article-container">
     <div>{props.title}</div>
     <div>{props.snippet}</div>
     <div>{props.url}</div>
