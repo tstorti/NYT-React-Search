@@ -1,13 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Articles from "./pages/Articles";
-import SavedArticles from "./pages/SavedArticles";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Main from "./pages/Main";
+import Search from "./pages/Search";
+import Saved from "./pages/Saved";
 
 const App = () =>
   <Router>
     <div>
-      <Articles>Articles</Articles>
-      <SavedArticles></SavedArticles>
+      <Main exact path="/" component = {Main}></Main>
+      <Switch>
+        <Search exact path="/search" component = {Search}></Search>
+        <Saved exact path="/saved" component = {Saved}></Saved>
+      </Switch>
     </div>
   </Router>;
 
