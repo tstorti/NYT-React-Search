@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
+  // Gets all articles
   getArticles: function(searchTerm, startYear, endYear) {
     
     //set queryURL
@@ -14,6 +14,9 @@ export default {
     // queryURL = queryURL + "&end_date=" + endYear + "0101";
 
     return axios.get(queryURL);
+  },
+  getSavedArticles: function(){
+    return axios.get("/api/articles/");
   },
   // Gets the book with the given id
   getArticle: function(id) {

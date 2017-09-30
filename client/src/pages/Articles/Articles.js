@@ -7,17 +7,13 @@ import { ArticleContainer } from "../../components/ArticleContainer";
 class Articles extends Component {
   state = {
     articles: [],
-    title: "",
-    date: "",
-    url: "",
     searchTerm: "",
     startYear:"",
     endYear:"",
   };
-
-  deleteArticles = id => {
-    API.deleteArticle(id)
-      .then(res => this.loadBooks())
+  saveArticle = data => {
+    API.saveArticle(data)
+      .then(res => console.log(res))
       .catch(err => console.log(err));
   };
 
@@ -46,7 +42,7 @@ class Articles extends Component {
   render() {
     return (
       <div>
-        <div>Hello React</div>
+        <div>Hello Articles</div>
         <Input
           value={this.state.searchTerm}
           onChange={this.handleInputChange}
@@ -76,9 +72,11 @@ class Articles extends Component {
           <ArticleContainer
               key = {article._id}
               id = {article._id}
+              date = {article.pub_date}
               title = {article.headline.main}
               url = {article.web_url}
               snippet = {article.snippet}
+              saveArticle = {this.saveArticle}
             />
            ))}
         </div>
