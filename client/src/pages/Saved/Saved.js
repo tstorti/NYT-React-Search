@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import API from "../../utils/API";
 import { SavedArticleContainer } from "../../components/SavedArticleContainer";
 
-class Articles extends Component {
+class Saved extends Component {
   state = {
     articles: [],
   };
@@ -32,22 +32,20 @@ class Articles extends Component {
   render() {
     return (
       <div>
-        <div>
-          {this.state.articles.map(article => (
-          <SavedArticleContainer
-              key = {article._id}
-              id = {article._id}
-              date = {article.date}
-              title = {article.title}
-              url = {article.url}
-              snippet = {article.snippet}
-              deleteArticle = {this.deleteArticle}
-            />
-           ))}
-        </div>
+        {this.state.articles.map(article => (
+        <SavedArticleContainer
+            key = {article._id}
+            id = {article._id}
+            date = {article.date}
+            title = {article.title}
+            url = {article.url}
+            snippet = {article.snippet}
+            deleteArticle = {this.deleteArticle}
+          />
+          ))}
       </div>
     );
   }
 }
 
-export default Articles;
+export default Saved;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Nav } from "../../components/Nav";
 
-class Articles extends Component {
+class Main extends Component {
   state = {
     articles: [],
   };
@@ -16,4 +16,4 @@ class Articles extends Component {
   }
 }
 
-export default Articles;
+export default Main;

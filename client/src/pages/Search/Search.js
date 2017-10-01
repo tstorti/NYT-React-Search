@@ -3,7 +3,7 @@ import API from "../../utils/API";
 import { Input, FormBtn } from "../../components/Form";
 import { ArticleContainer } from "../../components/ArticleContainer";
 
-class Articles extends Component {
+class Search extends Component {
   state = {
     articles: [],
     searchTerm: "",
@@ -82,4 +82,4 @@ class Articles extends Component {
   }
 }
 
-export default Articles;
+export default Search;

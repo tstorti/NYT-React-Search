@@ -1,6 +1,35 @@
 .article-container{
     padding:10px;
-    border: 1px solid black;
+    border: 1px solid #88A4D4;
     border-radius:5px;
     margin-bottom:10px;
+    background-color: #CFDDF5;
+}
+
+.article-title{
+    margin-bottom: 10px;
+    font-size:16px;
+}
+
+.article-date{
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.article-url{
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.article-snippet{
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.btn-delete{
+    background-color: #88A4D4;
+    border-color: transparent;
+    color: white;
+    padding: 10px;
+    border-radius:5px;
 }
