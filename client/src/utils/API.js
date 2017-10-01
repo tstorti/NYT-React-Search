@@ -10,8 +10,13 @@ export default {
       authKey + "&q=";
     let queryURL = queryURLBase + searchTerm;
     //need to check if these values aren't provided, then ignore below code
-    // queryURL = queryURL + "&begin_date=" + startYear + "0101";
-    // queryURL = queryURL + "&end_date=" + endYear + "0101";
+
+    if(startYear !== ""){
+      queryURL = queryURL + "&begin_date=" + startYear + "0101";
+    }
+    if(endYear !== ""){
+      queryURL = queryURL + "&end_date=" + endYear + "0101";
+    }
 
     return axios.get(queryURL);
   },
